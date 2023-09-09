@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
@@ -9,24 +11,34 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   int count = 0;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    Timer.periodic(const Duration(microseconds: 1), (timer) {
+      count++;
+      print(count);
+      setState(() {});
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
+    print("build");
     return Scaffold(
-      body: Column(
-        children: [
-          Center(
-            child: Text(DateTime.now().toString()),
-          ),
-        ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          setState(() {});
-          count++;
-          print(count);
-        },
-        child: const Icon(Icons.add),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              count.toString(),
+              style: const TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 50,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
