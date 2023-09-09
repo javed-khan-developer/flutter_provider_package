@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -12,8 +14,17 @@ class Count extends StatefulWidget {
 
 class _CountState extends State<Count> {
   @override
-  Widget build(BuildContext context) {
+  void initState() {
+    // TODO: implement initState
+    super.initState();
     final provider = Provider.of<CounterProvider>(context, listen: false);
+    Timer.periodic(const Duration(seconds: 2), (timer) {
+      provider.setCount();
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
     print('build');
     return Scaffold(
       body: Center(
@@ -30,14 +41,12 @@ class _CountState extends State<Count> {
                   ),
                 );
               },
-            )
+            ),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          provider.setCount();
-        },
+        onPressed: () {},
         child: const Icon(Icons.add),
       ),
     );
