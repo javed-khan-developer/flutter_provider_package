@@ -13,9 +13,8 @@ class _HomeState extends State<Home> {
   int count = 0;
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-    Timer.periodic(const Duration(microseconds: 1), (timer) {
+    Timer.periodic(const Duration(seconds: 1), (timer) {
       count++;
       print(count);
       setState(() {});
@@ -30,6 +29,13 @@ class _HomeState extends State<Home> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Text(
+              "${DateTime.now().hour}:${DateTime.now().minute}:${DateTime.now().second}",
+              style: const TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 50,
+              ),
+            ),
             Text(
               count.toString(),
               style: const TextStyle(
