@@ -12,7 +12,6 @@ class ExampleOne extends StatefulWidget {
 class _ExampleOneState extends State<ExampleOne> {
   @override
   Widget build(BuildContext context) {
-    final provider = Provider.of<ExampleOneProvider>(context, listen: false);
     print('build');
     return Scaffold(
       body: Column(
