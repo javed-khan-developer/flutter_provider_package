@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_provider_package/provider/auth_provider.dart';
 import 'package:flutter_provider_package/provider/cart_provider.dart';
+import 'package:flutter_provider_package/provider/jewellary_provider.dart';
 import 'package:flutter_provider_package/screens/cart/cart.dart';
+import 'package:flutter_provider_package/screens/jewellary/jewellary_model.dart';
+import 'package:flutter_provider_package/screens/jewellary/jewellary_screen.dart';
 import 'package:flutter_provider_package/screens/login/login.dart';
 import 'package:flutter_provider_package/screens/products/products.dart';
 import 'package:provider/provider.dart';
@@ -28,6 +31,8 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => ThemeProvider()),
         ChangeNotifierProvider(create: (_) => CartProvider()),
         ChangeNotifierProvider(create: (_) => AuthProvider()),
+        ChangeNotifierProvider(
+            create: (_) => JewellaryProvider()..getJewellary()),
       ],
       child: Builder(builder: (context) {
         final themeProvider = Provider.of<ThemeProvider>(context);
@@ -40,7 +45,7 @@ class MyApp extends StatelessWidget {
             useMaterial3: true,
           ),
           darkTheme: ThemeData(brightness: Brightness.dark),
-          home: const Products(),
+          home: const JewellaryScreen(),
         );
       }),
     );
