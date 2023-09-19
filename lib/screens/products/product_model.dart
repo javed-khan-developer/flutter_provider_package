@@ -11,8 +11,8 @@ class ProductModel {
   });
   static List<ProductModel> products = [
     ProductModel(id: 1, name: 'product 1', price: 100, discount: 50),
-    ProductModel(id: 2, name: 'product 2', price: 500, discount: 50),
-    ProductModel(id: 3, name: 'product 3', price: 140, discount: 50),
+    ProductModel(id: 2, name: 'product 2', price: 500, discount: 100),
+    ProductModel(id: 3, name: 'product 3', price: 140, discount: 100),
     ProductModel(id: 4, name: 'product 4', price: 108, discount: 50),
     ProductModel(id: 5, name: 'product 5', price: 106, discount: 50),
     ProductModel(id: 6, name: 'product 6', price: 180, discount: 50),

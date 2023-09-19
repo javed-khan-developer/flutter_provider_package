@@ -34,7 +34,7 @@ class Products extends StatelessWidget {
               children: [
                 Text(
                     'price : ${ProductModel.products[index].price! - ProductModel.products[index].discount!}'),
-                Text('discount : ${ProductModel.products[index].discount!}')
+                Text('discount : ${ProductModel.products[index].discount!}'),
               ],
             ),
             trailing: Consumer<CartProvider>(
