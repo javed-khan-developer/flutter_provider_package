@@ -27,7 +27,16 @@ class Products extends StatelessWidget {
           return ListTile(
             title: Text('name : ${ProductModel.products[index].name!}'),
             subtitle: Text(
-                'price : ${ProductModel.products[index].price}'.toString()),
+              'price : ${ProductModel.products[index].price}'.toString(),
+              style: const TextStyle(decoration: TextDecoration.lineThrough),
+            ),
+            leading: Column(
+              children: [
+                Text(
+                    'price : ${ProductModel.products[index].price! - ProductModel.products[index].discount!}'),
+                Text('discount : ${ProductModel.products[index].discount!}')
+              ],
+            ),
             trailing: Consumer<CartProvider>(
               builder: (context, value, child) {
                 return InkWell(

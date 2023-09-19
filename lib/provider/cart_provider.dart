@@ -6,6 +6,7 @@ class CartProvider with ChangeNotifier {
   int _totalPrice = 0;
   List<ProductModel> get getAllProduct => _productModel;
   int get totalPrice => _totalPrice;
+
   void addItemToCart(ProductModel productModel) {
     _productModel.add(productModel);
     notifyListeners();
