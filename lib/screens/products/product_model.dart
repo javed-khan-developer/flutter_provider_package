@@ -3,11 +3,13 @@ class ProductModel {
   String? name;
   int? price;
   int? discount;
+  int quantity;
   ProductModel({
     this.id,
     this.name,
     this.price,
     this.discount,
+    this.quantity = 1,
   });
   static List<ProductModel> products = [
     ProductModel(id: 1, name: 'product 1', price: 100, discount: 50),

@@ -45,7 +45,7 @@ class MyApp extends StatelessWidget {
             useMaterial3: true,
           ),
           darkTheme: ThemeData(brightness: Brightness.dark),
-          home: const JewellaryScreen(),
+          home: const Products(),
         );
       }),
     );
