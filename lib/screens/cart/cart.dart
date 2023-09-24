@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_provider_package/provider/cart_provider.dart';
+import 'package:flutter_provider_package/screens/products/product_details.dart';
 import 'package:provider/provider.dart';
 
 class Cart extends StatelessWidget {
@@ -17,43 +18,53 @@ class Cart extends StatelessWidget {
                   itemCount: value.getAllProduct.length,
                   itemBuilder: (context, index) {
                     final product = value.getAllProduct[index];
-                    return ListTile(
-                      title: Text(value.getAllProduct[index].name!),
-                      subtitle:
-                          Text(value.getAllProduct[index].price.toString()),
-                      trailing: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          IconButton(
-                            onPressed: () {
-                              value.setdecreaseQuantity(product);
-                              value.calculatePrice();
-                              value.calculateDiscount();
-                            },
-                            icon: const Icon(Icons.remove),
-                          ),
-                          Text(
-                            product.quantity.toString(),
-                            style: const TextStyle(fontSize: 18),
-                          ),
-                          IconButton(
-                            onPressed: () {
-                              value.setIncreaseQuantity(product);
-                              value.calculatePrice();
-                              value.calculateDiscount();
-                            },
-                            icon: const Icon(Icons.add),
-                          ),
-                          IconButton(
+                    return InkWell(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ProductDetails(
+                                  productModel: value.getAllProduct[index]),
+                            ));
+                      },
+                      child: ListTile(
+                        title: Text(value.getAllProduct[index].name!),
+                        subtitle:
+                            Text(value.getAllProduct[index].price.toString()),
+                        trailing: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            IconButton(
                               onPressed: () {
-                                if (value.getAllProduct.contains(product)) {
-                                  value.removeItemFromCart(product);
-                                  value.calculatePrice();
-                                  value.calculateDiscount();
-                                }
+                                value.setdecreaseQuantity(product);
+                                value.calculatePrice();
+                                value.calculateDiscount();
                               },
-                              icon: const Icon(Icons.delete)),
-                        ],
+                              icon: const Icon(Icons.remove),
+                            ),
+                            Text(
+                              product.quantity.toString(),
+                              style: const TextStyle(fontSize: 18),
+                            ),
+                            IconButton(
+                              onPressed: () {
+                                value.setIncreaseQuantity(product);
+                                value.calculatePrice();
+                                value.calculateDiscount();
+                              },
+                              icon: const Icon(Icons.add),
+                            ),
+                            IconButton(
+                                onPressed: () {
+                                  if (value.getAllProduct.contains(product)) {
+                                    value.removeItemFromCart(product);
+                                    value.calculatePrice();
+                                    value.calculateDiscount();
+                                  }
+                                },
+                                icon: const Icon(Icons.delete)),
+                          ],
+                        ),
                       ),
                     );
                   },
